@@ -1,4 +1,4 @@
 ---
 allowed_ports:
   - 22 #SSH
-  - 80 #HTTP
+  - 80 #HTTPS

@@ -1,0 +1,26 @@
+---
+- name: Change port
+  replace:
+    path: /etc/ssh/sshd_config
+    regexp: "#Port 22"
+    replace: "Port 2222"
+    backup: yes
+
+- name: Set PermitRootLogin to no
+  replace:
+    path: /etc/ssh/sshd_config
+    regexp: "#PermitRootLogin prohibit-password"
+    replace: "PermitRootLogin no"
+    backup: yes
+
+- name: Set MaxAuthTries to 3
+  replace:
+    path: /etc/ssh/sshd_config
+    regexp: "#MaxAuthTries 6"
+    replace: "MaxAuthTries 3"
+    backup: yes
+
+- name: Restart SSH
+  service: 
+    name: ssh
+    state: restarted
