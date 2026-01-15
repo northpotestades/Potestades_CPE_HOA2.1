@@ -1,0 +1,21 @@
+---
+- name: Install UFW
+  apt:
+    name: ufw
+    state: present
+
+- name: Set Default Policy to Deny Incoming
+  ufw:
+    direction: incoming
+    policy: deny
+
+- name: Allow SSH with Rate Limiting
+  ufw:
+    rule: limit
+    port: "{{ item }}"
+    proto: tcp
+  loop: "{{ allowed_ports }}"
+
+- name: Enable UFW
+  ufw:
+    state: enabled

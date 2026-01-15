@@ -1,0 +1,8 @@
+---
+- name: Apply Security Baselines
+  hosts: server
+  become: yes
+
+
+  roles:
+    - firewall_defense
