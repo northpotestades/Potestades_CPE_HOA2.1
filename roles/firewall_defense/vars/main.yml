@@ -2,3 +2,5 @@
 allowed_ports:
   - 22 #SSH
   - 80 #HTTPS
+
+panic_mode: true
