@@ -21,17 +21,8 @@
     state: enabled
 
 - name: PANIC MODE
-  iptables:
-    chain: INPUT
-    destination_port: "22"
-    protocol: tcp
-    jump: DROP
-  when: panic_mode | bool
-
-- name: PANIC MODE 2
-  iptables:
-    chain: INPUT
-    destination_port: "80"
-    protocol: tcp
-    jump: DROP
+  ufw:
+    state: enabled
+    policy: deny
+    direction: incoming
   when: panic_mode | bool
